@@ -17,6 +17,6 @@ runs:
         echo "Los parametro de entrada fueron: 
           - microservice name:  ${{ inputs.parametro1 }}
           - branch name: ${{ inputs.parametro2 }}
-          - secret token: ${{ process.env.REPO_TOKEN_SECRET }}
-          - variable token: ${{ process.env.REPO_TOKEN_VARIABLE }} "
+          - secret token: $REPO_TOKEN_SECRET
+          - variable token: $REPO_TOKEN_VARIABLE "
       shell: bash
