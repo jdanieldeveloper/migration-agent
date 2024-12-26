@@ -1,4 +1,4 @@
-name: Migration agent action
+name: Migration agent action test
 on:
   workflow_dispatch: # Execute de manual workflow
    inputs:
@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run migration agent action
-        uses: ../ # Use the action of repository local        
+        uses: ./ # Use the action of repository local        
