@@ -16,15 +16,10 @@ jobs:
     steps:
       # Step 1: Checkout code
       - name: Checkout the action
-        uses: jdanieldeveloper/migration-agent@main        
-      # Step 2: Set environment variables and secrets
-      - name: Set secrets and variables
-        env:
-          REPO_TOKEN_SECRET: ${{ secrets.REPOSITORY_TOKEN_SECRET }}
-          REPO_TOKEN_VARIABLE: ${{ vars.REPOSITORY_TOKEN_VARIABLE }}
+        uses: jdanieldeveloper/migration-agent@main
       # Step 3: Run the custom action
       - name: Run the custom action
-        uses: ./      
+        uses: ./
         with:
           param1: ${{ inputs.param1 }}
           param2: ${{ inputs.param2 }}
