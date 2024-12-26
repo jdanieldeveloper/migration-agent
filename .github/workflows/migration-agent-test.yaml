@@ -26,5 +26,5 @@ jobs:
       - name: Run the custom action
         uses: ./      
         with:
-          param1: ${{ inputs.input1 }}
-          param2: ${{ inputs.input2 }}
+          param1: ${{ inputs.param1 }}
+          param2: ${{ inputs.param2 }}
