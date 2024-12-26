@@ -1,7 +1,7 @@
 name: 'Bci Migration Agent'
 description: 'Update microservices from older spring versions to spring 3.x '
 author: "Daniel Carvajal"
-# optional: visual configurations to actions of Marketplace
+# Optional: visual configurations to actions of Marketplace
 branding:
   icon: 'package' # icon name (consulta FontAwesome)
   color: 'blue' # color list: white, yellow, blue, green, orange, red, purple, etc.
