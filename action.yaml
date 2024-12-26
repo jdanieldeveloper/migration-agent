@@ -4,18 +4,13 @@ author: "Daniel Carvajal"
 # Optional: visual configurations to actions of Marketplace
 branding:
   icon: 'package' # icon name (consulta FontAwesome)
-  color: 'blue' # color list: white, yellow, blue, green, orange, red, purple, etc.
-
-inputs:
-  param1:
-    description: "Microservice name"
-    required: true
-  param2:
-    description: "Branch name"
-    required: true
+  color: 'blue' # color list: white, yellow, blue, green, orange, red, purple, etc.    
 runs:
   using: "composite"
   steps:
-    # Step 1: echo hello action
+      # Step 1: Checkout current repository
+    - name: Checkout this repository
+      uses: actions/checkout@v3
+    # Step 2: echo hello action
     - name: Greet
       run: echo "Hello action"
