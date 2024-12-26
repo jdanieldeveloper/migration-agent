@@ -11,3 +11,4 @@ runs:
     # Step 2: echo hello action
     - name: Greet
       run: echo "Hello action"
+      shell: bash
