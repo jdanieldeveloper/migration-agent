@@ -1,0 +1,18 @@
+name: Migration agent action
+on:
+  workflow_dispatch: # Execute de manual workflow
+   inputs:
+      param1:
+        description: "Microservice name"
+        required: true
+        default: "Ex: ms-test-name"
+      param2:
+        description: "Branch name"
+        required: true
+        default: "Ex: branch-test-123"
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run migration agent action
+        uses: ./ # Use the action of repository local        
