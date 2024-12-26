@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run migration agent action
-        uses: ./ # Use the action of repository local        
+        uses: ../ # Use the action of repository local        
