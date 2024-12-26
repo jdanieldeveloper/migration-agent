@@ -21,5 +21,8 @@ jobs:
       - name: Run the custom action
         uses: ./
         with:
-          param1: ${{ inputs.param1 }}
-          param2: ${{ inputs.param2 }}
+          parametro1: ${{ inputs.param1 }}
+          parametro2: ${{ inputs.param2 }}
+        env:
+          REPO_TOKEN_SECRET: ${{ secrets.REPOSITORY_TOKEN_SECRET }}
+          REPO_TOKEN_VARIABLE: ${{ vars.REPOSITORY_TOKEN_VARIABLE }}  

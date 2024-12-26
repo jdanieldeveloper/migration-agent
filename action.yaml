@@ -15,8 +15,8 @@ runs:
     - name: Greet
       run: | 
         echo "Los parametro de entrada fueron: 
-          - microservice name: param1: ${{ inputs.param1 }}
-          - branch name: ${{ inputs.param2 }}
-          - secret token: 3 
-          - variable token: 4 "
+          - microservice name:  ${{ inputs.parametro1 }}
+          - branch name: ${{ inputs.parametro2 }}
+          - secret token: ${{ REPO_TOKEN_SECRET }}
+          - variable token: ${{ REPO_TOKEN_VARIABLE }} "
       shell: bash
