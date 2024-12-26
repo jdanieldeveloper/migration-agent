@@ -8,9 +8,6 @@ branding:
 runs:
   using: "composite"
   steps:
-      # Step 1: Checkout the action
-    - name: Checkout the action
-      uses: jdanieldeveloper/migration-agent@main
     # Step 2: echo hello action
     - name: Greet
       run: echo "Hello action"
