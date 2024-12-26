@@ -8,9 +8,6 @@ branding:
 runs:
   using: "composite"
   steps:
-      # Step 1: Checkout current repository
-    - name: Checkout this repository
-      uses: actions/checkout@v3
     # Step 2: echo hello action
     - name: Greet
       run: echo "Hello action"
