@@ -13,5 +13,9 @@ runs:
       uses: actions/checkout@v3
     # Step 2: echo hello action
     - name: Greet
-      run: echo "Hello action"
+      run: | 
+        echo "Los parametro de entrada fueron: 
+          - microservice name: ${{ inputs.param1 }}
+          - branch name: ${{ inputs.param2 }} 
+          - secret token: $REPO_TOKEN_SECRET "
       shell: bash

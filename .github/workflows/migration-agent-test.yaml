@@ -16,7 +16,9 @@ jobs:
     steps:
      # Step 1: Checkout the action
       - name: Checkout the action
-        uses: jdanieldeveloper/migration-agent@main
+        uses: jdanieldeveloper/migration-agent@main        
+        env:
+          REPO_TOKEN_SECRET: ${{ secrets.REPOSITORY_TOKEN_SECRET}}
     # Step 1: 
       - name: Run migration agent action
         uses: ./      
