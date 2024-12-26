@@ -21,7 +21,7 @@ jobs:
       - name: Set secrets and variables
         env:
           REPO_TOKEN_SECRET: ${{ secrets.REPOSITORY_TOKEN_SECRET }}
-          REPO_TOKEN_VARIABLE: ${{ vars.REPOSITORY_TOKEN_VARIABLE }} 
+          REPO_TOKEN_VARIABLE: ${{ vars.REPOSITORY_TOKEN_VARIABLE }}
       # Step 3: Run the custom action
       - name: Run the custom action
         uses: ./      
