@@ -1,4 +1,4 @@
-name: Migration agent action
+name: Migration agent action test
 on:
   workflow_dispatch: # Execute de manual workflow
    inputs:
