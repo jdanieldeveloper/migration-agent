@@ -1,4 +1,4 @@
-name: Migration agent action test
+name: Execute Migration Agent
 on:
   workflow_dispatch: # Execute de manual workflow
    inputs:
@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Step 1: Checkout code
-      - name: Checkout the action
-        uses: jdanieldeveloper/migration-agent@main
+      - name: Checkout repository
+        uses: actions/checkout@v3
       # Step 3: Run the custom action
       - name: Run the custom action
         uses: ./

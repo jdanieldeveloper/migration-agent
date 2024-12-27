@@ -1,0 +1,41 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main # Build and publish when there are changes in the main branch
+  workflow_dispatch: # Allow manual execution
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout del código
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Login a Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Step 3: Configurar el nombre de la imagen
+      - name: Set up Docker image name
+        run: echo "IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/migration-agent" >> $GITHUB_ENV
+
+      # Step 4: Build la imagen Docker
+      - name: Build Docker image
+        run: |
+          docker build -t $IMAGE_NAME:latest .
+
+      # Step 5: Subir la imagen a Docker Hub
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker push $IMAGE_NAME:latest
+
+      # Step 6: Confirmación de la publicación
+      - name: Confirm Docker image pushed
+        run: echo "Docker image $IMAGE_NAME:latest has been pushed to Docker Hub"
