@@ -7,12 +7,14 @@ runs:
     # Step 1: Checkout current repository
     - name: Checkout Repository
       uses: actions/checkout@v3
+
     # Step 2: Define local variables   
     - name: Define local variables
       run: |
         echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent:lastest" >> $GITHUB_ENV
         echo "DOCKER_CONTAINER=migration-agent" >> $GITHUB_ENV  
       shell: bash    
+
     # Step 3: Print input parameters
     - name: Print input parameters
       run: | 
@@ -24,12 +26,21 @@ runs:
           - Docker image: $DOCKER_IMAGE
           - Docker container: $DOCKER_CONTAINER"
       shell: bash    
+
+     # Step 2: Login a Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}      
+
     # Step 4: Pull Doker image
     - name: Pull Docker Image
       run: |
         echo "Pulling Docker image $DOCKER_IMAGE"
         docker pull $DOCKER_IMAGE
       shell: bash  
+
     # Step 5: Run Doker image
     - name: Run Docker Container
       run: |
@@ -40,10 +51,12 @@ runs:
         echo "Running container $DOCKER_CONTAINER with image $DOCKER_IMAGE"
         docker run -d --name $DOCKER_CONTAINER $ENV_VARS $DOCKER_IMAGE
       shell: bash  
+
     # Step 6: Verify running containers
     - name: Verify Running Containers
       run: docker ps
       shell: bash  
+
     # Step 7: Clean up docker container
     - name: Clean Up Docker Container
       run: docker rm -f $DOCKER_CONTAINER
