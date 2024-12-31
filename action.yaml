@@ -1,6 +1,9 @@
 name: 'Bci Migration Agent'
 description: 'Update microservices from older spring versions to spring 3.x '
 author: "Daniel Carvajal"
+env:
+  DOCKER_IMAGE: danielcarvajal2178/migration-agent:lastest
+  DOCKER_CONTAINER: migration-agent
 runs:
   using: "composite"
   steps:
