@@ -16,15 +16,17 @@ runs:
       shell: bash    
 
     # Step 3: Print input parameters
-    - name: Print input parameters
+    - name: Print action parameters
       run: | 
         echo "Exec action with next parameters: 
           - Microservice name:  ${{ inputs.parametro1 }}
           - Branch name: ${{ inputs.parametro2 }}
           - Secret token: $REPO_TOKEN_SECRET
           - Variable token: $REPO_TOKEN_VARIABLE
+          - Docker user: $DOCKER_USERNAME
+          - Docker pass: $DOCKER_PASSWORD
           - Docker image: $DOCKER_IMAGE
-          - Docker container: $DOCKER_CONTAINER"
+          - Docker container: $DOCKER_CONTAINER"          
       shell: bash    
 
      # Step 2: Login a Docker Hub
