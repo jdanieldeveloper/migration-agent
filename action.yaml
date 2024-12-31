@@ -40,7 +40,7 @@ runs:
     - name: Pull Docker Image
       run: |
         echo "Pulling Docker image $DOCKER_IMAGE"
-        docker pull $DOCKER_IMAGE
+        docker pull danielcarvajal2178/migration-agent:lastest
       shell: bash  
 
     # Step 5: Run Doker image
