@@ -1,22 +1,44 @@
 name: 'Bci Migration Agent'
 description: 'Update microservices from older spring versions to spring 3.x '
 author: "Daniel Carvajal"
-# Optional: visual configurations to actions of Marketplace
-branding:
-  icon: 'package' # icon name (consulta FontAwesome)
-  color: 'blue' # color list: white, yellow, blue, green, orange, red, purple, etc.    
 runs:
   using: "composite"
   steps:
     # Step 1: Checkout current repository
-    - name: Checkout this repository
+    - name: Checkout Repository
       uses: actions/checkout@v3
-    # Step 2: echo hello action
-    - name: Greet
+    # Step 2: Define local variables   
+    - name: Define local variables
+      run: |
+        DOCKER_IMAGE="danielcarvajal2178/migration-agent:lastest"
+        DOCKER_CONTAINER="migration-agent"     
+    # Step 3: Print input parameters
+    - name: Print input parameters
       run: | 
-        echo "Los parametro de entrada fueron: 
-          - microservice name:  ${{ inputs.parametro1 }}
-          - branch name: ${{ inputs.parametro2 }}
-          - secret token: $REPO_TOKEN_SECRET
-          - variable token: $REPO_TOKEN_VARIABLE "
-      shell: bash
+        echo "The input parameters: 
+          - Microservice name:  ${{ inputs.parametro1 }}
+          - Branch name: ${{ inputs.parametro2 }}
+          - Secret token: $REPO_TOKEN_SECRET
+          - Variable token: $REPO_TOKEN_VARIABLE "
+      shell:
+    # Step 4: Pull Doker image
+    - name: Pull Docker Image
+      run: |
+        echo "Pulling Docker image $DOCKER_IMAGE"
+        docker pull $DOCKER_IMAGE
+    # Step 5: Run Doker image
+    - name: Run Docker Container
+      run: |
+        # Convert environment variables into Docker-compatible -e options
+        declare -a ENV_ARGS=('-e ${{ inputs.parametro1 }}' '-e ${{ inputs.parametro2 }}' '-e $REPO_TOKEN_SECRET')
+
+        # Run the container with the provided runtime arguments
+        echo "Running container $DOCKER_CONTAINER with image $DOCKER_IMAGE"
+        docker run -d --name $DOCKER_CONTAINER $ENV_VARS $DOCKER_IMAGE
+    # Step 6: Verify running containers
+    - name: Verify Running Containers
+      run: docker ps
+    # Step 7: Clean up docker container
+    - name: Clean Up Docker Container
+      run: docker rm -f $DOCKER_CONTAINER
+
