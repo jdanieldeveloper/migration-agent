@@ -11,7 +11,8 @@ runs:
     - name: Define local variables
       run: |
         DOCKER_IMAGE="danielcarvajal2178/migration-agent:lastest"
-        DOCKER_CONTAINER="migration-agent"     
+        DOCKER_CONTAINER="migration-agent"   
+      shell: bash    
     # Step 3: Print input parameters
     - name: Print input parameters
       run: | 
@@ -20,11 +21,13 @@ runs:
           - Branch name: ${{ inputs.parametro2 }}
           - Secret token: $REPO_TOKEN_SECRET
           - Variable token: $REPO_TOKEN_VARIABLE "
+      shell: bash    
     # Step 4: Pull Doker image
     - name: Pull Docker Image
       run: |
         echo "Pulling Docker image $DOCKER_IMAGE"
         docker pull $DOCKER_IMAGE
+      shell: bash  
     # Step 5: Run Doker image
     - name: Run Docker Container
       run: |
@@ -34,10 +37,13 @@ runs:
         # Run the container with the provided runtime arguments
         echo "Running container $DOCKER_CONTAINER with image $DOCKER_IMAGE"
         docker run -d --name $DOCKER_CONTAINER $ENV_VARS $DOCKER_IMAGE
+      shell: bash  
     # Step 6: Verify running containers
     - name: Verify Running Containers
       run: docker ps
+      shell: bash  
     # Step 7: Clean up docker container
     - name: Clean Up Docker Container
       run: docker rm -f $DOCKER_CONTAINER
+      shell: bash
 
