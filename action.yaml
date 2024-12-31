@@ -20,7 +20,6 @@ runs:
           - Branch name: ${{ inputs.parametro2 }}
           - Secret token: $REPO_TOKEN_SECRET
           - Variable token: $REPO_TOKEN_VARIABLE "
-      shell:
     # Step 4: Pull Doker image
     - name: Pull Docker Image
       run: |
