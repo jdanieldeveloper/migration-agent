@@ -10,8 +10,8 @@ runs:
     # Step 2: Define local variables   
     - name: Define local variables
       run: |
-        DOCKER_IMAGE="danielcarvajal2178/migration-agent:lastest >> $GITHUB_ENV"
-        DOCKER_CONTAINER="migration-agent >> $GITHUB_ENV"  
+        DOCKER_IMAGE="danielcarvajal2178/migration-agent:lastest" >> $GITHUB_ENV
+        DOCKER_CONTAINER="migration-agent" >> $GITHUB_ENV  
       shell: bash    
     # Step 3: Print input parameters
     - name: Print input parameters
