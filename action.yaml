@@ -11,7 +11,7 @@ runs:
     # Step 2: Define local variables   
     - name: Define local variables
       run: |
-        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent:latest" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent" >> $GITHUB_ENV
         echo "DOCKER_CONTAINER=migration-agent" >> $GITHUB_ENV  
       shell: bash    
 
