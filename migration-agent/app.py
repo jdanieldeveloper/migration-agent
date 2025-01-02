@@ -1,12 +1,14 @@
 # Migrator agent
+import os
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
+def print_environments_variables():
+    # Obtener una variable de entorno
+    param1 = os.environ.get('PARAM1')
+    print(f"El valor de 'PARAM1' es: {param1}")
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('Daniel Carvajal Soto :-P')
+    print("Hello World!!!")
+    print_environments_variables()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+

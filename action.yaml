@@ -47,7 +47,7 @@ runs:
     - name: Run Docker Container
       run: |
         # Convert environment variables into Docker-compatible -e options
-        declare -a ENV_ARGS=('-e ${{ inputs.parametro1 }}' '-e ${{ inputs.parametro2 }}' '-e $REPO_TOKEN_SECRET')
+        declare -a ENV_ARGS=('-e PARAM1=${{ inputs.parametro1 }}' '-e PARAM2=${{ inputs.parametro2 }}' '-e PARAM3=$REPO_TOKEN_SECRET')
 
         # Run the container with the provided runtime arguments
         echo "Running container $DOCKER_CONTAINER with image $DOCKER_IMAGE"
