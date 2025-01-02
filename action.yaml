@@ -11,7 +11,7 @@ runs:
     # Step 2: Define local variables   
     - name: Define local variables
       run: |
-        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent:lastest" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent:latest" >> $GITHUB_ENV
         echo "DOCKER_CONTAINER=migration-agent" >> $GITHUB_ENV  
       shell: bash    
 
@@ -22,6 +22,7 @@ runs:
           - Microservice name:  ${{ inputs.parametro1 }}
           - Branch name: ${{ inputs.parametro2 }}
           - Secret token: $REPO_TOKEN_SECRET
+          - Variable token: $REPO_TOKEN_VARIABLE
           - Docker user: $DOCKER_USERNAME
           - Docker pass: $DOCKER_PASSWORD
           - Docker image: $DOCKER_IMAGE
@@ -39,7 +40,7 @@ runs:
     - name: Pull Docker Image
       run: |
         echo "Pulling Docker image $DOCKER_IMAGE"
-        docker pull danielcarvajal2178/migration-agent:latest
+        docker pull $DOCKER_IMAGE
       shell: bash  
 
     # Step 5: Run Doker image
