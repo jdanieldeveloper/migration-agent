@@ -20,6 +20,9 @@ RUN apk add --no-cache gcc musl-dev python3-dev libffi-dev
 # Comando por defecto para ejecutar la aplicación
 CMD ["python", "app.py"]
 
+
+#  Execute image localty
+#
 #  docker build -t migration-agent .
 #  docker rm migration-agent
 #  

@@ -11,11 +11,11 @@ runs:
     # Step 2: Define local variables   
     - name: Define local variables
       run: |
-        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE=danielcarvajal2178/migration-agent:latest" >> $GITHUB_ENV
         echo "DOCKER_CONTAINER=migration-agent" >> $GITHUB_ENV  
       shell: bash    
 
-    # Step 3: Print input parameters
+    # Step 3: Print action parameters
     - name: Print action parameters
       run: | 
         echo "Exec action with next parameters: 
@@ -57,6 +57,11 @@ runs:
     # Step 6: Verify running containers
     - name: Verify Running Containers
       run: docker ps
+      shell: bash  
+
+    # Step 7: Show container logs
+    - name: Show Containers Logs
+      run: docker logs $DOCKER_CONTAINER
       shell: bash  
 
     # Step 7: Clean up docker container
